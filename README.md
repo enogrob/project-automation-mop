@@ -420,4 +420,5 @@ mindmap
 * [Ericsson WRAN Documentation](https://www.ericsson.com/) - Official Ericsson resources for Wireless Radio Access Network technologies and procedures
 * [YAML Specification](https://yaml.org/) - Data serialization standard used for configuration and session data management
 * [Rainbow Gem Documentation](https://github.com/sickill/rainbow) - Ruby library for colorized terminal output enhancement
+* [KOs - YouTube Playlist](https://www.youtube.com/playlist?list=PLFfgJOsnFX6uF2hE5OtbKPOoKOECyQmnx) - In these videos are shown some automations while I was working at Ericsson (RICC) - Brazil
 
