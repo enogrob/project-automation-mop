@@ -17,7 +17,7 @@
 
 ### Summary
 
-The Ruby Automation Mop (RICC Automation) is a sophisticated Ruby-based automation framework developed by Roberto Nogueira for Ericsson between 2010-2015. This project was specifically designed to streamline and automate RICC (Radio Integration Competence Center), O&M (Operations & Maintenance), and SI (System Integration) activities in WRAN (Wireless Radio Access Network) Integration environments. The system serves as a comprehensive toolkit for telecommunications engineers working with Ericsson's wireless infrastructure.
+The Ruby Automation Mop (RICC Automation) is a sophisticated Ruby-based automation framework developed by Roberto Nogueira for Ericsson between 2010-2013. This project was specifically designed to streamline and automate RICC (Radio Integration Competence Center), O&M (Operations & Maintenance), and SI (System Integration) activities in WRAN (Wireless Radio Access Network) Integration environments. The system serves as a comprehensive toolkit for telecommunications engineers working with Ericsson's wireless infrastructure.
 
 The project centers around a powerful Rakefile containing over 2,600 lines of automation code that provides more than 30 distinct tasks for managing telecommunications network operations. These tasks range from generating Excel workbooks and managing site associations to processing logs, handling SFTP operations, and creating test templates. The automation framework significantly reduces manual effort in complex network integration processes, enabling engineers to execute standardized procedures with consistent results across multiple network sites.
 
