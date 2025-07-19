@@ -23,6 +23,12 @@ The project centers around a powerful Rakefile containing over 2,600 lines of au
 
 The Ruby Automation Mop represents a critical tool for telecommunications professionals working in WRAN environments, particularly those involved in network rollouts, optimization, and maintenance activities. Its comprehensive approach to automation addresses the complex workflows typical in telecommunications infrastructure management, making it an invaluable resource for teams managing large-scale wireless network deployments and ongoing operations.
 
+<br/>
+
+![](images/movistar.png)
+
+<br/>
+
 ### Architecture
 
 ```mermaid
