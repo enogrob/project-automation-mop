@@ -25,7 +25,11 @@ The Ruby Automation Mop represents a critical tool for telecommunications profes
 
 <br/>
 
-![](images/movistar.png)
+<div align="center">
+  <a href="https://www.youtube.com/playlist?list=PLFfgJOsnFX6uF2hE5OtbKPOoKOECyQmnx" target="_blank">
+    <img src="images/movistar.png" alt="Movistar Automation Demo">
+  </a>
+</div>
 
 <br/>
 
