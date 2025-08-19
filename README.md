@@ -36,39 +36,40 @@ The Ruby Automation Mop represents a critical tool for telecommunications profes
 ### Architecture
 
 ```mermaid
+%%{init: { 'themeVariables': { 'primaryColor': '#f6e7ff', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
 graph TD
-    A[Rakefile - Main Automation Engine] --> B[RICC Templates Directory]
-    A --> C[TODAY Working Directory]
-    A --> D[RICC Archive Directory]
+    A[🛠️ Rakefile - Main Automation Engine]:::main --> B[🗂️ RICC Templates Directory]:::templates
+    A --> C[📅 TODAY Working Directory]:::today
+    A --> D[📦 RICC Archive Directory]:::archive
     
-    subgraph "Core Automation Tasks"
-        E[ricc_init - Initialization]
-        F[ricc_start - Session Start]
-        G[ricc_scripts - Script Generation]
-        H[ricc_genxls - Excel Generation]
-        I[ricc_print - Data Display]
-        J[ricc_term - Session Termination]
+    subgraph "Core Automation Tasks 🧩"
+        E[🚦 ricc_init - Initialization]:::core
+        F[🔄 ricc_start - Session Start]:::core
+        G[📝 ricc_scripts - Script Generation]:::core
+        H[📊 ricc_genxls - Excel Generation]:::core
+        I[👁️ ricc_print - Data Display]:::core
+        J[🛑 ricc_term - Session Termination]:::core
     end
     
-    subgraph "Data Processing"
-        K[ricc_data.yaml - Session Data]
-        L[Log File Processing]
-        M[IP Database Management]
-        N[Site List Management]
+    subgraph "Data Processing 📊"
+        K[📄 ricc_data.yaml - Session Data]:::data
+        L[📂 Log File Processing]:::data
+        M[🔢 IP Database Management]:::data
+        N[📋 Site List Management]:::data
     end
     
-    subgraph "External Integrations"
-        O[Excel/WIN32OLE Integration]
-        P[SecureCRT Integration]
-        Q[SFTP Operations]
-        R[Windows Clipboard]
+    subgraph "External Integrations 🌐"
+        O[📈 Excel/WIN32OLE Integration]:::ext
+        P[💻 SecureCRT Integration]:::ext
+        Q[🔒 SFTP Operations]:::ext
+        R[📋 Windows Clipboard]:::ext
     end
     
-    subgraph "Template System"
-        S[Excel Templates]
-        T[VBS Scripts]
-        U[MOS Scripts]
-        V[Session Templates]
+    subgraph "Template System 🧾"
+        S[📑 Excel Templates]:::templates
+        T[📜 VBS Scripts]:::templates
+        U[🗒️ MOS Scripts]:::templates
+        V[🧩 Session Templates]:::templates
     end
     
     A --> E
@@ -99,6 +100,14 @@ graph TD
     C --> L
     C --> M
     C --> N
+
+    classDef main fill:#f6e7ff,stroke:#b39ddb,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef templates fill:#e0f7fa,stroke:#4dd0e1,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef today fill:#ffe0e0,stroke:#ffb3b3,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef archive fill:#fff9c4,stroke:#ffe082,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef core fill:#e1f5fe,stroke:#81d4fa,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef data fill:#fce4ec,stroke:#f06292,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef ext fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#333,rx:12px,ry:12px;
 ```
 
 #### Alternative Perspectives
@@ -107,52 +116,53 @@ graph TD
 <summary><strong>1. Class Diagram - Structural Relationships</strong> (Click to expand)</summary>
 
 ```mermaid
+%%{init: { 'themeVariables': { 'primaryColor': '#f6e7ff', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
 classDiagram
     class RakefileAutomation {
-        +String RICC_PATH
-        +String RICC_TEMPLATES
-        +String RICC_ARCHIVE
-        +String TODAY
-        +String RICC_DATA_FILE
-        +ricc_init(activity)
-        +ricc_start()
-        +ricc_scripts(sites, activity, action)
-        +ricc_genxls(sites, activity)
-        +ricc_print()
-        +ricc_term()
+        🛠️ +String RICC_PATH
+        🗂️ +String RICC_TEMPLATES
+        📦 +String RICC_ARCHIVE
+        📅 +String TODAY
+        📄 +String RICC_DATA_FILE
+        🚦 +ricc_init(activity)
+        🔄 +ricc_start()
+        📝 +ricc_scripts(sites, activity, action)
+        📊 +ricc_genxls(sites, activity)
+        👁️ +ricc_print()
+        🛑 +ricc_term()
     }
     
     class DataManager {
-        +String ricc_start
-        +String ricc_stop
-        +String ricc_site
-        +String ricc_activity
-        +String ricc_customer
-        +get_ricc_data()
-        +save_ricc_data()
-        +load_ricc_data()
+        🕒 +String ricc_start
+        🕓 +String ricc_stop
+        🏷️ +String ricc_site
+        🏗️ +String ricc_activity
+        👤 +String ricc_customer
+        📥 +get_ricc_data()
+        💾 +save_ricc_data()
+        📤 +load_ricc_data()
     }
     
     class ExcelIntegration {
-        +WIN32OLE excel
-        +set_workbook_associations(activity)
-        +generate_workbooks()
-        +process_templates()
+        📈 +WIN32OLE excel
+        🧩 +set_workbook_associations(activity)
+        📊 +generate_workbooks()
+        🛠️ +process_templates()
     }
     
     class LogProcessor {
-        +process_logs()
-        +extract_commands()
-        +generate_reports()
-        +parse_site_data()
+        📂 +process_logs()
+        🔍 +extract_commands()
+        📑 +generate_reports()
+        🗂️ +parse_site_data()
     }
     
     class TemplateEngine {
-        +Array excel_templates
-        +Array vbs_scripts
-        +Array mos_scripts
-        +copy_templates()
-        +customize_templates()
+        📑 +Array excel_templates
+        📜 +Array vbs_scripts
+        🗒️ +Array mos_scripts
+        🧩 +copy_templates()
+        🎨 +customize_templates()
     }
     
     RakefileAutomation "1" --> "1" DataManager : manages
@@ -161,6 +171,8 @@ classDiagram
     RakefileAutomation "1" --> "1" TemplateEngine : utilizes
     DataManager "1" --> "*" LogProcessor : feeds_data
     ExcelIntegration "1" --> "*" TemplateEngine : consumes
+    
+    classDef default fill:#f6e7ff,stroke:#b39ddb,stroke-width:2px,color:#333,rx:12px,ry:12px;
 ```
 
 </details>
@@ -169,48 +181,49 @@ classDiagram
 <summary><strong>2. Journey Process - State Transitions</strong> (Click to expand)</summary>
 
 ```mermaid
+%%{init: { 'themeVariables': { 'primaryColor': '#e0f7fa', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#f6e7ff', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
 stateDiagram-v2
-    [*] --> Initialization
-    Initialization --> ricc_init : Configure activity type
-    ricc_init --> SessionStart : Templates copied
-    SessionStart --> ricc_start : Begin automation session
-    ricc_start --> DataCollection : YAML data created
+    [*] --> Initialization: 🚦
+    Initialization --> ricc_init: Configure activity type 🏗️
+    ricc_init --> SessionStart: Templates copied 🧩
+    SessionStart --> ricc_start: Begin automation session 🔄
+    ricc_start --> DataCollection: YAML data created 📄
     
-    DataCollection --> ScriptGeneration : Site data available
-    DataCollection --> ExcelGeneration : Templates ready
-    DataCollection --> LogProcessing : Logs available
+    DataCollection --> ScriptGeneration: Site data available 🏷️
+    DataCollection --> ExcelGeneration: Templates ready 📑
+    DataCollection --> LogProcessing: Logs available 📂
     
-    ScriptGeneration --> ricc_scripts : Generate automation scripts
-    ExcelGeneration --> ricc_genxls : Create Excel workbooks
-    LogProcessing --> ricc_logsget : Process log files
+    ScriptGeneration --> ricc_scripts: Generate automation scripts 📝
+    ExcelGeneration --> ricc_genxls: Create Excel workbooks 📊
+    LogProcessing --> ricc_logsget: Process log files 📂
     
-    ricc_scripts --> TaskExecution
+    ricc_scripts --> TaskExecution: Execute tasks 🛠️
     ricc_genxls --> TaskExecution
     ricc_logsget --> TaskExecution
     
-    TaskExecution --> Validation : Check results
-    Validation --> Correction : Issues found
-    Validation --> Completion : All tasks successful
-    Correction --> TaskExecution : Retry operations
+    TaskExecution --> Validation: Check results ✅
+    Validation --> Correction: Issues found ⚠️
+    Validation --> Completion: All tasks successful 🎉
+    Correction --> TaskExecution: Retry operations 🔁
     
-    Completion --> ricc_term : Finalize session
-    ricc_term --> Archive : ricc_archive
-    Archive --> [*] : Session completed
+    Completion --> ricc_term: Finalize session 🛑
+    ricc_term --> Archive: ricc_archive 📦
+    Archive --> [*]: Session completed 🏁
     
     note right of Initialization
         Supports multiple activity types:
-        - fullip
-        - rehoming
-        - movistar
-        - dualstack
+        - fullip 🌐
+        - rehoming 🔄
+        - movistar 🇪🇸
+        - dualstack 🧬
     end note
     
     note right of TaskExecution
         Parallel execution of:
-        - Site processing
-        - Excel generation
-        - Log analysis
-        - Script creation
+        - Site processing 🏷️
+        - Excel generation 📊
+        - Log analysis 📂
+        - Script creation 📝
     end note
 ```
 
@@ -220,67 +233,68 @@ stateDiagram-v2
 <summary><strong>3. Mind Map - Interconnected Themes</strong> (Click to expand)</summary>
 
 ```mermaid
+%%{init: { 'themeVariables': { 'primaryColor': '#ffe0e0', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#f6e7ff', 'background': '#f9f9fb' } } }%%
 mindmap
-    root((Ruby Automation Mop))
-        Automation Framework
-            Rake-based Tasks
-                30+ Task Definitions
-                Modular Design
-                Parameter Support
-            Template System
-                Excel Templates
-                VBS Scripts
-                MOS Scripts
-                Session Templates
-            Data Management
-                YAML Configuration
-                Site Data Processing
-                Log File Handling
-                IP Database Management
+    root((🛠️ Ruby Automation Mop))
+        Automation Framework 🧩
+            Rake-based Tasks 📝
+                30+ Task Definitions 🔢
+                Modular Design 🧱
+                Parameter Support ⚙️
+            Template System 🧾
+                Excel Templates 📑
+                VBS Scripts 📜
+                MOS Scripts 🗒️
+                Session Templates 🧩
+            Data Management 📊
+                YAML Configuration 📄
+                Site Data Processing 🏷️
+                Log File Handling 📂
+                IP Database Management 🔢
         
-        WRAN Integration
-            RICC Activities
-                Radio Integration
-                Network Optimization
-                Site Commissioning
-            O&M Operations
-                Maintenance Tasks
-                Performance Monitoring
-                Troubleshooting
-            SI Activities
-                System Integration
-                Configuration Management
-                Testing Procedures
+        WRAN Integration 🌐
+            RICC Activities 🚦
+                Radio Integration 📡
+                Network Optimization 📈
+                Site Commissioning 🏗️
+            O&M Operations 🛠️
+                Maintenance Tasks 🧰
+                Performance Monitoring 📊
+                Troubleshooting 🛠️
+            SI Activities 🧬
+                System Integration 🔗
+                Configuration Management ⚙️
+                Testing Procedures 🧪
         
-        Technical Stack
-            Ruby Language
-                Rake Build Tool
-                YAML Processing
-                File Operations
-            Windows Integration
-                WIN32OLE Excel
-                SecureCRT Automation
-                Clipboard Operations
-                VBS Scripting
-            Network Tools
-                SFTP Operations
-                Log Processing
-                IP Management
+        Technical Stack 🛠️
+            Ruby Language 💎
+                Rake Build Tool 📝
+                YAML Processing 📄
+                File Operations 📁
+            Windows Integration 🪟
+                WIN32OLE Excel 📈
+                SecureCRT Automation 💻
+                Clipboard Operations 📋
+                VBS Scripting 📜
+            Network Tools 🌐
+                SFTP Operations 🔒
+                Log Processing 📂
+                IP Management 🔢
         
-        Workflow Management
-            Session Lifecycle
-                Initialization
-                Execution
-                Termination
-                Archival
-            Quality Assurance
-                Data Validation
-                Error Handling
-                Result Verification
-            Documentation
-                Automated Reports
-                Excel Workbooks
-                Log Analysis
+        Workflow Management 🔄
+            Session Lifecycle 🔁
+                Initialization 🚦
+                Execution ▶️
+                Termination 🛑
+                Archival 📦
+            Quality Assurance ✅
+                Data Validation ✔️
+                Error Handling ⚠️
+                Result Verification 🔍
+            Documentation 📚
+                Automated Reports 📝
+                Excel Workbooks 📑
+                Log Analysis 📂
 ```
 
 </details>
