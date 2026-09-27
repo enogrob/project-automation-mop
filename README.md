@@ -36,11 +36,11 @@ The Ruby Automation Mop represents a critical tool for telecommunications profes
 ### Architecture
 
 ```mermaid
-%%{init: { 'themeVariables': { 'primaryColor': '#f6e7ff', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
-graph TD
-    A[🛠️ Rakefile - Main Automation Engine]:::main --> B[🗂️ RICC Templates Directory]:::templates
-    A --> C[📅 TODAY Working Directory]:::today
-    A --> D[📦 RICC Archive Directory]:::archive
+%%{init: { 'themeVariables': { 'primaryColor': '#DCEBFA', 'primaryBorderColor': '#355C7D', 'primaryTextColor': '#1E293B', 'lineColor': '#52606D', 'fontSize': '16px' } } }%%
+graph LR
+    A([🛠️ Rakefile - Main Automation Engine]):::main -->|reads| B[(🗂️ RICC Templates Directory)]:::templates
+    A -->|works in| C[(📅 TODAY Working Directory)]:::today
+    A -->|archives to| D[(📦 RICC Archive Directory)]:::archive
     
     subgraph "Core Automation Tasks 🧩"
         E[🚦 ricc_init - Initialization]:::core
@@ -72,42 +72,42 @@ graph TD
         V[🧩 Session Templates]:::templates
     end
     
-    A --> E
-    A --> F
-    A --> G
-    A --> H
-    A --> I
-    A --> J
+    A -->|runs| E
+    A -->|runs| F
+    A -->|runs| G
+    A -->|runs| H
+    A -->|runs| I
+    A -->|runs| J
     
-    E --> B
-    F --> K
-    G --> L
-    H --> S
-    I --> K
-    J --> D
+    E -->|initializes| B
+    F -->|creates| K
+    G -->|processes| L
+    H -->|generates| S
+    I -->|reads| K
+    J -->|archives| D
     
-    O --> H
-    P --> T
-    Q --> U
-    R --> E
+    O -->|supports| H
+    P -->|drives| T
+    Q -->|transfers| U
+    R -->|provides input to| E
     
-    B --> S
-    B --> T
-    B --> U
-    B --> V
+    B -->|contains| S
+    B -->|contains| T
+    B -->|contains| U
+    B -->|contains| V
     
-    C --> K
-    C --> L
-    C --> M
-    C --> N
+    C -->|stores| K
+    C -->|stores| L
+    C -->|stores| M
+    C -->|stores| N
 
-    classDef main fill:#f6e7ff,stroke:#b39ddb,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef templates fill:#e0f7fa,stroke:#4dd0e1,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef today fill:#ffe0e0,stroke:#ffb3b3,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef archive fill:#fff9c4,stroke:#ffe082,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef core fill:#e1f5fe,stroke:#81d4fa,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef data fill:#fce4ec,stroke:#f06292,stroke-width:2px,color:#333,rx:12px,ry:12px;
-    classDef ext fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef main fill:#DCEBFA,stroke:#355C7D,stroke-width:2px,color:#1E293B;
+    classDef templates fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324;
+    classDef today fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324;
+    classDef archive fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324;
+    classDef core fill:#DCEBFA,stroke:#355C7D,stroke-width:2px,color:#1E293B;
+    classDef data fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324;
+    classDef ext fill:#FBE4F0,stroke:#8E496D,stroke-width:2px,color:#3F2434;
 ```
 
 #### Alternative Perspectives
@@ -116,7 +116,7 @@ graph TD
 <summary><strong>1. Class Diagram - Structural Relationships</strong> (Click to expand)</summary>
 
 ```mermaid
-%%{init: { 'themeVariables': { 'primaryColor': '#f6e7ff', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
+%%{init: { 'themeVariables': { 'primaryColor': '#DCEBFA', 'primaryBorderColor': '#355C7D', 'primaryTextColor': '#1E293B', 'lineColor': '#52606D', 'fontSize': '16px' } } }%%
 classDiagram
     class RakefileAutomation {
         🛠️ +String RICC_PATH
@@ -172,7 +172,14 @@ classDiagram
     DataManager "1" --> "*" LogProcessor : feeds_data
     ExcelIntegration "1" --> "*" TemplateEngine : consumes
     
-    classDef default fill:#f6e7ff,stroke:#b39ddb,stroke-width:2px,color:#333,rx:12px,ry:12px;
+    classDef default fill:#DCEBFA,stroke:#355C7D,stroke-width:2px,color:#1E293B
+    classDef data fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324
+    classDef templates fill:#DDF2E1,stroke:#3F6B4F,stroke-width:2px,color:#1E3324
+    classDef ext fill:#FBE4F0,stroke:#8E496D,stroke-width:2px,color:#3F2434
+    class DataManager data
+    class LogProcessor data
+    class TemplateEngine templates
+    class ExcelIntegration ext
 ```
 
 </details>
@@ -181,7 +188,7 @@ classDiagram
 <summary><strong>2. Journey Process - State Transitions</strong> (Click to expand)</summary>
 
 ```mermaid
-%%{init: { 'themeVariables': { 'primaryColor': '#e0f7fa', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#f6e7ff', 'tertiaryColor': '#ffe0e0', 'background': '#f9f9fb' } } }%%
+%%{init: { 'themeVariables': { 'primaryColor': '#DCEBFA', 'primaryBorderColor': '#355C7D', 'primaryTextColor': '#1E293B', 'lineColor': '#52606D', 'fontSize': '16px' } } }%%
 stateDiagram-v2
     [*] --> Initialization: 🚦
     Initialization --> ricc_init: Configure activity type 🏗️
@@ -225,6 +232,13 @@ stateDiagram-v2
         - Log analysis 📂
         - Script creation 📝
     end note
+
+    classDef process fill:#DCEBFA,stroke:#355C7D,color:#1E293B;
+    classDef data fill:#DDF2E1,stroke:#3F6B4F,color:#1E3324;
+    classDef warning fill:#F9DFDF,stroke:#8C3A3A,color:#401E1E;
+    class Initialization,ricc_init,SessionStart,ricc_start,ScriptGeneration,ExcelGeneration,LogProcessing,ricc_scripts,ricc_genxls,ricc_logsget,TaskExecution,Completion,ricc_term process;
+    class DataCollection,Archive data;
+    class Validation,Correction warning;
 ```
 
 </details>
@@ -233,7 +247,7 @@ stateDiagram-v2
 <summary><strong>3. Mind Map - Interconnected Themes</strong> (Click to expand)</summary>
 
 ```mermaid
-%%{init: { 'themeVariables': { 'primaryColor': '#ffe0e0', 'edgeLabelBackground':'#fff', 'fontSize': '16px', 'fontFamily': 'Inter, Arial', 'nodeTextColor': '#333', 'secondaryColor': '#e0f7fa', 'tertiaryColor': '#f6e7ff', 'background': '#f9f9fb' } } }%%
+%%{init: { 'themeVariables': { 'primaryColor': '#DCEBFA', 'secondaryColor': '#DDF2E1', 'tertiaryColor': '#FBE4F0', 'lineColor': '#52606D', 'fontSize': '16px' } } }%%
 mindmap
     root((🛠️ Ruby Automation Mop))
         Automation Framework 🧩
