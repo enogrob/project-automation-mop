@@ -2,7 +2,7 @@
 
 [Homepage](https://github.com/enogrob/ruby-automation-mop)
 
-![project image](images/project.png)
+![project image](images/project-automation-mop-infographic.webp)
 
 ## Contents
 
