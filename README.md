@@ -36,39 +36,40 @@ The Ruby Automation Mop represents a critical tool for telecommunications profes
 ### Architecture
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "13px"}, "flowchart": {"wrappingWidth": 200, "minNodeWidth": 0, "padding": 8}}}%%
 flowchart TD
-    A[⚙️ Rakefile]:::orchestration -->|reads| B[(📚 RICC Templates)]:::context
-    A -->|uses| C[(📚 TODAY Working Directory)]:::context
-    A -->|archives to| D[(📚 RICC Archive)]:::context
+    A(["⚙️ Rakefile"]):::orchestration -->|reads| B(["📚 RICC Templates"]):::context
+    A -->|uses| C(["📚 TODAY Working Directory"]):::context
+    A -->|archives to| D(["📚 RICC Archive"]):::context
 
     subgraph Core_Tasks[⚙️ Core Automation Tasks]
-        E[▶️ ricc_init]:::orchestration
-        F[▶️ ricc_start]:::orchestration
-        G[▶️ ricc_scripts]:::orchestration
-        H[▶️ ricc_genxls]:::orchestration
-        I[▶️ ricc_print]:::orchestration
-        J[▶️ ricc_term]:::orchestration
+        E(["▶️ ricc_init"]):::orchestration
+        F(["▶️ ricc_start"]):::orchestration
+        G(["▶️ ricc_scripts"]):::orchestration
+        H(["▶️ ricc_genxls"]):::orchestration
+        I(["▶️ ricc_print"]):::orchestration
+        J(["▶️ ricc_term"]):::orchestration
     end
 
     subgraph Data_Processing[📄 Data Processing]
-        K[(📄 ricc_data.yaml)]:::context
-        L[(📄 Log Files)]:::context
-        M[(📄 IP Database)]:::context
-        N[(📄 Site Lists)]:::context
+        K(["📄 ricc_data.yaml"]):::context
+        L(["📄 Log Files"]):::context
+        M(["📄 IP Database"]):::context
+        N(["📄 Site Lists"]):::context
     end
 
     subgraph External_Integrations[⚙️ External Integrations]
-        O[⚙️ Excel / WIN32OLE]:::orchestration
-        P[⚙️ SecureCRT]:::orchestration
-        Q[⚙️ SFTP]:::orchestration
-        R[⚙️ Windows Clipboard]:::orchestration
+        O(["⚙️ Excel / WIN32OLE"]):::orchestration
+        P(["⚙️ SecureCRT"]):::orchestration
+        Q(["⚙️ SFTP"]):::orchestration
+        R(["⚙️ Windows Clipboard"]):::orchestration
     end
 
     subgraph Template_System[📚 Template System]
-        S[(📄 Excel Templates)]:::context
-        T[(📄 VBS Scripts)]:::context
-        U[(📄 MOS Scripts)]:::context
-        V[(📄 Session Templates)]:::context
+        S(["📄 Excel Templates"]):::context
+        T(["📄 VBS Scripts"]):::context
+        U(["📄 MOS Scripts"]):::context
+        V(["📄 Session Templates"]):::context
     end
 
     A -->|runs| E
@@ -100,8 +101,8 @@ flowchart TD
     C -->|stores| M
     C -->|stores| N
 
-    classDef context fill:#D9EAF7,stroke:#7AA6C2,color:#3E342C,stroke-width:2px;
-    classDef orchestration fill:#DDE3F4,stroke:#8998C8,color:#3E342C,stroke-width:2px;
+    classDef context fill:#D6EAF8,stroke:#496F91,color:#3E342C,stroke-width:2px;
+    classDef orchestration fill:#E3D1F2,stroke:#8050A1,color:#3E342C,stroke-width:2px;
 ```
 
 #### Alternative Perspectives
@@ -235,9 +236,9 @@ stateDiagram-v2
         - Script creation
     end note
 
-    classDef orchestration fill:#DDE3F4,stroke:#8998C8,color:#3E342C,stroke-width:2px;
-    classDef context fill:#D9EAF7,stroke:#7AA6C2,color:#3E342C,stroke-width:2px;
-    classDef uncertainty fill:#F6D6DD,stroke:#BF7C89,color:#3E342C,stroke-width:2px;
+    classDef orchestration fill:#E3D1F2,stroke:#8050A1,color:#3E342C,stroke-width:2px;
+    classDef context fill:#D6EAF8,stroke:#496F91,color:#3E342C,stroke-width:2px;
+    classDef uncertainty fill:#F2D4E8,stroke:#92517D,color:#3E342C,stroke-width:2px;
     class Initialization,ricc_init,SessionStart,ricc_start,ScriptGeneration,ExcelGeneration,LogProcessing,ricc_scripts,ricc_genxls,ricc_logsget,TaskExecution,Correction,Completion,ricc_term orchestration;
     class DataCollection,Archive context;
     class Validation uncertainty;
@@ -461,4 +462,3 @@ mindmap
 * [YAML Specification](https://yaml.org/) - Data serialization standard used for configuration and session data management
 * [Rainbow Gem Documentation](https://github.com/sickill/rainbow) - Ruby library for colorized terminal output enhancement
 * [KOs - YouTube Playlist](https://www.youtube.com/playlist?list=PLFfgJOsnFX6uF2hE5OtbKPOoKOECyQmnx) - In these videos are shown some automations while I was working at Ericsson (RICC) - Brazil
-
